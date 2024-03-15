@@ -95,10 +95,17 @@ function getByCapital($id)
     }
 }
 
-function getCity($city)
+function getCity($city_id)
 {
+    // pour utiliser la variable globale dans la fonction
     global $pdo;
-    $query = 'SELECT * FROM City;';
-    return $pdo->query($query)->fetchAll();
+    $query = 'SELECT * FROM City WHERE idCountry = :idCountry';
+    $prep = $pdo->prepare($query);
+
+    $prep->bindValue(':idCountry', $city_id, PDO::PARAM_STR);
+    $prep->execute();
+
+    // on retourne un tableau d'objets (car spécifié dans connect-db.php)
+    return $prep->fetchAll();
 
 }

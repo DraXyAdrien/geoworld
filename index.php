@@ -55,7 +55,7 @@ if(isset($_GET['continent'])){
           <tr>
             <td> <?php echo $pays->id ?></td>
             <td> <img src="images/flags/<?php if(file_exists("images/flags/$image")) { echo $image; } else { echo "vide.png"; } ?>"> </td>
-            <td> <a href="infos/infos-city.php?city=<?php echo $pays->Name ?>"><?php echo $pays->Name ?></a></td>
+            <td> <a href="infos/infos-city.php?city_id=<?php echo $pays->id ?>"><?php echo $pays->Name ?></a></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->Continent ?></td>
             <td> <?php if (!empty($pays->Capital)) { echo getByCapital($pays->Capital); } else { echo "Vide"; } ?></td>

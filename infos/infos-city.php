@@ -6,13 +6,14 @@
 <?php 
 
 
-if(isset($_GET['city'])){
-  $city = $_GET['city'];
-  $laville = getCity($city);
-
+if(isset($_GET['city_id'])){
+  $city_id = $_GET['city_id'];
+  $laville = getCity($city_id);
 } else {
     header("/index.php");
 }
+
+$city = "test";
 
 ?>
 
@@ -28,8 +29,7 @@ if(isset($_GET['city'])){
          </tr>
 
 
-         <?php foreach($lesvilles as $city){ ?>
-
+         <?php foreach($laville as $city){ ?>
 
           <tr>
             <td> <?php echo $city->id ?></td>
