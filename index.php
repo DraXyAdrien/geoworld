@@ -40,26 +40,27 @@ if(isset($_GET['continent'])){
      <table class="table">
          <tr>
           <th>ID</th>
+          <th>Flag</th>
           <th>Nom</th>
           <th>Population</th>
           <th>Continent</th>
           <th>Capital</th>
          </tr>
-       <?php
-       // $desPays est un tableau dont les éléments sont des objets représentant
-       // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
-       
-       foreach($desPays as $pays){ ?>
+
+          <?php foreach($desPays as $pays){ 
+          $image = strtolower($pays->Code2);
+          $image = "$image.png";
+          ?>
+
           <tr>
             <td> <?php echo $pays->id ?></td>
-            <td> <?php echo $pays->Name ?></td>
+            <td> <img src="images/flags/<?php if(file_exists("images/flags/$image")) { echo $image; } else { echo "vide.png"; } ?>"> </td>
+            <td> <a href="infos/infos-city.php?city=<?php echo $pays->Name ?>"><?php echo $pays->Name ?></a></td>
             <td> <?php echo $pays->Population ?></td>
             <td> <?php echo $pays->Continent ?></td>
             <td> <?php if (!empty($pays->Capital)) { echo getByCapital($pays->Capital); } else { echo "Vide"; } ?></td>
           </tr>
         <?php } ?>
-
-
      </table>
     </div>
 

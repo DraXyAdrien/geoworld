@@ -70,7 +70,7 @@ function getAllCountries()
 function getContinent()
 {
     global $pdo;
-    $query = 'SELECT DISTINCT Continent FROM `Country`';
+    $query = 'SELECT DISTINCT Continent FROM Country';
     return $pdo->query($query)->fetchAll();
 }
 
@@ -93,4 +93,12 @@ function getByCapital($id)
         // on retourne un tableau d'objets (car spécifié dans connect-db.php)
         return $prep->fetch()->Name;
     }
+}
+
+function getCity($city)
+{
+    global $pdo;
+    $query = 'SELECT * FROM City;';
+    return $pdo->query($query)->fetchAll();
+
 }
